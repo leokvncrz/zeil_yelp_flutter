@@ -30,3 +30,20 @@ Remember, there is no right or wrong solution to this exercise; we are looking f
 ## Getting Started
 
 Install FVM [here](https://fvm.app/documentation/getting-started/installation)
+
+FVM to use a specific version of flutter.
+
+Get Packages
+```sh
+fvm flutter pub get
+```
+
+**Packages used:**
+- [equatable](https://pub.dev/packages/equatable)
+- [dio](https://pub.dev/packages/dio)
+- [flutter_bloc](https://pub.dev/packages/flutter_bloc)
+
+Run the App
+```sh
+fvm flutter run
+```
