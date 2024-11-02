@@ -1,0 +1,112 @@
+{
+  "id": "h37t9rA06Sr4EetJjKrfzw",
+  "alias": "don-angie-new-york",
+  "name": "Don Angie",
+  "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/onJX6_vaMPHXUqIbMrq79A/o.jpg",
+  "is_closed": false,
+  "url": "https://www.yelp.com/biz/don-angie-new-york?adjust_creative=fdb_9wxNRFzfx9Sl63cgtQ&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=fdb_9wxNRFzfx9Sl63cgtQ",
+  "review_count": 939,
+  "categories": [
+      {
+          "alias": "italian",
+          "title": "Italian"
+      },
+      {
+          "alias": "newamerican",
+          "title": "New American"
+      }
+  ],
+  "rating": 4.5,
+  "coordinates": {
+      "latitude": 40.73778,
+      "longitude": -74.00197
+  },
+  "transactions": [
+      "delivery"
+  ],
+  "price": "$$$",
+  "location": {
+      "address1": "103 Greenwich Ave",
+      "address2": "",
+      "address3": null,
+      "city": "New York",
+      "zip_code": "10014",
+      "country": "US",
+      "state": "NY",
+      "display_address": [
+          "103 Greenwich Ave",
+          "New York, NY 10014"
+      ]
+  },
+  "phone": "+12128898884",
+  "display_phone": "(212) 889-8884",
+  "distance": 3646.541688095945,
+  "business_hours": [
+      {
+          "open": [
+              {
+                  "is_overnight": false,
+                  "start": "1630",
+                  "end": "2200",
+                  "day": 0
+              },
+              {
+                  "is_overnight": false,
+                  "start": "1630",
+                  "end": "2200",
+                  "day": 1
+              },
+              {
+                  "is_overnight": false,
+                  "start": "1630",
+                  "end": "2200",
+                  "day": 2
+              },
+              {
+                  "is_overnight": false,
+                  "start": "1630",
+                  "end": "2200",
+                  "day": 3
+              },
+              {
+                  "is_overnight": false,
+                  "start": "1530",
+                  "end": "2200",
+                  "day": 4
+              },
+              {
+                  "is_overnight": false,
+                  "start": "1130",
+                  "end": "1400",
+                  "day": 5
+              },
+              {
+                  "is_overnight": false,
+                  "start": "1530",
+                  "end": "2200",
+                  "day": 5
+              },
+              {
+                  "is_overnight": false,
+                  "start": "1130",
+                  "end": "1400",
+                  "day": 6
+              },
+              {
+                  "is_overnight": false,
+                  "start": "1530",
+                  "end": "2200",
+                  "day": 6
+              }
+          ],
+          "hours_type": "REGULAR",
+          "is_open_now": false
+      }
+  ],
+  "attributes": {
+      "business_temp_closed": null,
+      "menu_url": "https://www.donangie.com/menus/#menu",
+      "open24_hours": null,
+      "waitlist_reservation": null
+  }
+}

@@ -45,5 +45,10 @@ fvm flutter pub get
 
 Run the App
 ```sh
-fvm flutter run
+fvm flutter run --dart-define=API_KEY=<your yelp api key here>
+```
+
+Run the Tests
+```sh
+fvm flutter test
 ```
