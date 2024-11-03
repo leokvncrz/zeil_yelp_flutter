@@ -31,7 +31,7 @@ jobs:
 
       # Step 5: Build APK
       - name: Build release APK
-        run: flutter build apk --release --dart-define=API_KEY=${{ secrets.YELP_API_KEY }}
+        run: flutter build apk --dart-define=API_KEY=${{ secrets.YELP_API_KEY }}
 
       # Step 6: Upload APK to GitHub release
       - name: Create Release and Upload APK
