@@ -7,14 +7,32 @@ part 'home_event.dart';
 part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
+  int offset = 0;
   final YelpService yelpService;
   HomeBloc({required this.yelpService}) : super(HomeInitial()) {
     on<GetNYCBusinessList>((event, emit) async {
-      emit(HomeLoading());
+      // Ignore if fully loaded
+      if (state is HomeFullyLoaded) return;
+
+      // Ignore if already loading
+      if (state is HomeLoading) return;
+
+      final businessList = <BusinessModel>[];
+      if (state is HomeLoaded) {
+        businessList.addAll((state as HomeLoaded).businesses);
+        emit(HomeLoading(businessList));
+        offset = businessList.length;
+      }
       try {
-        final fetchResult = await yelpService.getNYCBusinessList();
+        final fetchResult =
+            await yelpService.getNYCBusinessList(offset: offset);
         if (fetchResult.isSuccess) {
-          emit(HomeLoaded(fetchResult.args!));
+          businessList.addAll(fetchResult.args!);
+          if (fetchResult.message == businessList.length.toString()) {
+            emit(HomeFullyLoaded(businessList));
+          } else {
+            emit(HomeLoaded(businessList));
+          }
         } else {
           emit(HomeError(fetchResult.message));
         }

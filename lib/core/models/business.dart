@@ -32,7 +32,7 @@ class BusinessModel extends Equatable {
           name: json['name'],
           imageUrl: json['image_url'],
           isClosed: json['is_closed'],
-          price: json['price'],
+          price: json['price'] ?? '',
           url: json['url'],
           displayAddress: json['location']['display_address'].join(', '),
           reviewCount: json['review_count'],

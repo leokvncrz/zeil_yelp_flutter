@@ -9,15 +9,27 @@ sealed class HomeState extends Equatable {
 
 final class HomeInitial extends HomeState {}
 
-final class HomeLoading extends HomeState {}
-
-final class HomeLoaded extends HomeState {
+class HomeLoaded extends HomeState {
   final List<BusinessModel> businesses;
 
   const HomeLoaded(this.businesses);
 
   @override
-  List<Object> get props => [businesses];
+  List<Object> get props => [businesses.length];
+}
+
+final class HomeLoading extends HomeLoaded {
+  const HomeLoading(super.businesses);
+
+  @override
+  List<Object> get props => [businesses.length];
+}
+
+final class HomeFullyLoaded extends HomeLoaded {
+  const HomeFullyLoaded(super.businesses);
+
+  @override
+  List<Object> get props => [businesses.length];
 }
 
 final class HomeError extends HomeState {
