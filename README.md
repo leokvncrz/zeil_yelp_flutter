@@ -52,3 +52,12 @@ Run the Tests
 ```sh
 fvm flutter test
 ```
+
+**Others:**
+For vscode launch.json, make sure to update the API_KEY value in the file.
+You can also add an environment variable on your .zshrc file.
+
+You can also run directly via flutter without using fvm.
+```sh
+flutter run --dard-define=API_KEY=<your yelp api key here>
+```
