@@ -60,5 +60,5 @@ You can also add an environment variable on your .zshrc file.
 
 You can also run directly via flutter without using fvm.
 ```sh
-flutter run --dard-define=API_KEY=<your yelp api key here>
+flutter run --dart-define=API_KEY=<your yelp api key here>
 ```
