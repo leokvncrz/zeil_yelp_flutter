@@ -42,6 +42,7 @@ fvm flutter pub get
 - [equatable](https://pub.dev/packages/equatable)
 - [dio](https://pub.dev/packages/dio)
 - [flutter_bloc](https://pub.dev/packages/flutter_bloc)
+- [logger](https://pub.dev/packages/logger)
 
 Run the App
 ```sh

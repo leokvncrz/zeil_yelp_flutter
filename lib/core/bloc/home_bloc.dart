@@ -8,7 +8,7 @@ part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final YelpService yelpService;
-  HomeBloc(this.yelpService) : super(HomeInitial()) {
+  HomeBloc({required this.yelpService}) : super(HomeInitial()) {
     on<GetNYCBusinessList>((event, emit) async {
       emit(HomeLoading());
       try {

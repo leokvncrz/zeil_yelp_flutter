@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:yelp_nyc_business/core/app_bloc_observer.dart';
+import 'package:yelp_nyc_business/core/bloc/home_bloc.dart';
+import 'package:yelp_nyc_business/core/interfaces/yelp_service.dart';
+import 'package:yelp_nyc_business/services/yelp_service_impl.dart';
+import 'package:yelp_nyc_business/view/pages/home.dart';
 import 'package:yelp_nyc_business/view/pages/routes.dart';
 import 'package:yelp_nyc_business/view/theme/app_theme.dart';
 import 'package:yelp_nyc_business/view/widgets/transitions/fade_route.dart';
 
 void main() {
+  Bloc.observer = AppBlocObserver();
   runApp(const MyApp());
 }
 
@@ -11,7 +18,19 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   Route<dynamic> _generateRoute(RouteSettings settings) {
-    Widget newPage = Container(color: Colors.blue);
+    Widget newPage = Container(
+        color: Colors.red,
+        child: Center(
+          child: Text('Not Supported!'),
+        ));
+
+    switch (settings.name) {
+      case AppRoutes.home:
+        newPage = const HomePage();
+        break;
+      default:
+    }
+
     return FadeRoute(
       page: Theme(
         data: lightTheme,
@@ -23,31 +42,28 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'NCY Business List DEMO',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      initialRoute: AppRoutes.initialRoute,
-      onGenerateRoute: (settings) => _generateRoute(
-        settings,
+    return MultiRepositoryProvider(
+      providers: [
+        RepositoryProvider<YelpService>(
+          create: (context) => YelpServiceImpl(),
+        ),
+      ],
+      child: BlocProvider<HomeBloc>(
+        create: (context) => HomeBloc(
+          yelpService: RepositoryProvider.of<YelpService>(context),
+        )..add(const GetNYCBusinessList()),
+        child: MaterialApp(
+          title: 'NCY Business List DEMO',
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+            useMaterial3: true,
+          ),
+          initialRoute: AppRoutes.home,
+          onGenerateRoute: (settings) => _generateRoute(
+            settings,
+          ),
+        ),
       ),
     );
   }

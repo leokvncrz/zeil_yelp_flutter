@@ -16,6 +16,8 @@ void main() {
       expect(business.id, 'h37t9rA06Sr4EetJjKrfzw');
       expect(business.alias, 'don-angie-new-york');
       expect(business.name, 'Don Angie');
+      expect(business.price, "\$\$\$");
+      expect(business.displayAddress, '103 Greenwich Ave, New York, NY 10014');
       expect(business.imageUrl,
           'https://s3-media2.fl.yelpcdn.com/bphoto/onJX6_vaMPHXUqIbMrq79A/o.jpg');
       expect(business.isClosed, false);

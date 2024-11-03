@@ -7,7 +7,9 @@ class BusinessModel extends Equatable {
   final String imageUrl;
   final bool isClosed;
   final String url;
+  final String price;
   final int reviewCount;
+  final String displayAddress;
   final double rating;
 
   const BusinessModel({
@@ -17,6 +19,8 @@ class BusinessModel extends Equatable {
     required this.imageUrl,
     required this.isClosed,
     required this.url,
+    required this.price,
+    required this.displayAddress,
     required this.reviewCount,
     required this.rating,
   });
@@ -28,7 +32,9 @@ class BusinessModel extends Equatable {
           name: json['name'],
           imageUrl: json['image_url'],
           isClosed: json['is_closed'],
+          price: json['price'],
           url: json['url'],
+          displayAddress: json['location']['display_address'].join(', '),
           reviewCount: json['review_count'],
           rating: json['rating'],
         );
@@ -40,6 +46,7 @@ class BusinessModel extends Equatable {
         name,
         imageUrl,
         isClosed,
+        price,
         url,
         reviewCount,
         rating,
