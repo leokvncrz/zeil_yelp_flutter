@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yelp_nyc_business/core/bloc/home_bloc.dart';
+import 'package:yelp_nyc_business/view/pages/routes.dart';
 import 'package:yelp_nyc_business/view/widgets/cards/business_card.dart';
 
 class HomePage extends StatefulWidget {
@@ -66,7 +67,10 @@ class _HomePageState extends State<HomePage> {
           }
 
           final business = state.businesses[index];
-          return BusinessCard(business: business);
+          return GestureDetector(
+              onTap: () => Navigator.pushNamed(context, AppRoutes.details,
+                  arguments: business),
+              child: BusinessCard(business: business));
         },
       );
     }

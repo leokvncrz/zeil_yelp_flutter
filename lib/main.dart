@@ -3,7 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yelp_nyc_business/core/app_bloc_observer.dart';
 import 'package:yelp_nyc_business/core/bloc/home_bloc.dart';
 import 'package:yelp_nyc_business/core/interfaces/yelp_service.dart';
+import 'package:yelp_nyc_business/core/models/business.dart';
 import 'package:yelp_nyc_business/services/yelp_service_impl.dart';
+import 'package:yelp_nyc_business/view/pages/business_details.dart';
 import 'package:yelp_nyc_business/view/pages/home.dart';
 import 'package:yelp_nyc_business/view/pages/routes.dart';
 import 'package:yelp_nyc_business/view/theme/app_theme.dart';
@@ -27,6 +29,12 @@ class MyApp extends StatelessWidget {
     switch (settings.name) {
       case AppRoutes.home:
         newPage = const HomePage();
+        break;
+      case AppRoutes.details:
+        final args = settings.arguments;
+        newPage = BusinessDetails(
+          business: args as BusinessModel,
+        );
         break;
       default:
     }
