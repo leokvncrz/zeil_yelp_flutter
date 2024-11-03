@@ -1,4 +1,4 @@
-package com.example.yelp_nyc_business
+package com.keitri.yelp_nyc_business
 
 import io.flutter.embedding.android.FlutterActivity
 
