@@ -1,0 +1,41 @@
+name: Build and Release APK
+on:
+  push:
+    tags:
+      - "v*"  # Trigger workflow only on version tags
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Step 2: Set up Flutter
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.24.4"
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: flutter pub get
+
+      # Step 4: Run tests
+      - name: Run tests
+        run: flutter test
+
+      # Step 5: Build APK
+      - name: Build release APK
+        run: flutter build apk --release --dart-define=API_KEY=${{ secrets.YELP_API_KEY }}
+
+      # Step 6: Upload APK to GitHub release
+      - name: Create Release and Upload APK
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: build/app/outputs/flutter-apk/app-release.apk
+          tag: ${{ github.ref_name }}
+          name: "Release ${{ github.ref_name }}"
+          body: "Automated release of version ${{ github.ref_name }}"
