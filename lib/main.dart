@@ -11,8 +11,7 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   Route<dynamic> _generateRoute(RouteSettings settings) {
-    Widget newPage = Container();
-
+    Widget newPage = Container(color: Colors.blue);
     return FadeRoute(
       page: Theme(
         data: lightTheme,

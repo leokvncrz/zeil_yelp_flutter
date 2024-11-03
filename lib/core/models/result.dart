@@ -2,14 +2,14 @@ import 'package:equatable/equatable.dart';
 
 enum MessageType { success, error, warning, information }
 
-class ResultModel extends Equatable {
+class ResultModel<T> extends Equatable {
   final MessageType type;
   final String message;
-  final Object? args;
+  final T? args;
 
   const ResultModel._({required this.type, required this.message, this.args});
 
-  const ResultModel.success({required String message, Object? args})
+  const ResultModel.success({required String message, T? args})
       : this._(type: MessageType.success, message: message, args: args);
 
   const ResultModel.error({required String message})
